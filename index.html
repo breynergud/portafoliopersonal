@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio personal de Breyner kadhir Peña Giron - Desarrollador de Software Front-end">
+    <title>Breyner Peña - Desarrollador Front-end</title>
+    
+    <!-- Importar fuente de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos CSS embebidos -->
+    <style>
+        /* ========================================
+           RESET Y CONFIGURACIÓN GLOBAL
+           ======================================== */
+
+        /* Eliminar márgenes y padding predeterminados */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Configuración del body con fuente y colores base */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; /* Fondo oscuro */
+            color: #f8fafc; /* Texto claro */
+            line-height: 1.6;
+            overflow-x: hidden; /* Evitar scroll horizontal */
+        }
+
+        /* Contenedor principal para centrar contenido */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========================================
+           NAVEGACIÓN
+           ======================================== */
+
+        .navbar {
+            position: fixed; /* Navbar fija en la parte superior */
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95); /* Fondo semitransparente */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque */
+            padding: 1rem 0;
+            z-index: 1000; /* Por encima de otros elementos */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-brand h2 {
+            background: linear-gradient(135deg, #38bdf8, #f97316); /* Gradiente celeste-naranja */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Botón hamburguesa (oculto en desktop) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(135deg, #38bdf8, #f97316);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease; /* Transición suave */
+            position: relative;
+        }
+
+        /* Efecto hover en enlaces del menú */
+        .nav-menu a:hover {
+            color: #38bdf8; /* Cambio de color al pasar el mouse */
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #38bdf8, #f97316);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%; /* Línea animada debajo del enlace */
+        }
+
+        /* ========================================
+           SECCIÓN HERO (PRESENTACIÓN)
+           ======================================== */
+
+        .hero {
+            margin-top: 80px; /* Espacio para la navbar fija */
+            padding: 4rem 0;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Dos columnas: imagen y texto */
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Estilos para la imagen de perfil */
+        .hero-image {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid transparent;
+            background: linear-gradient(135deg, #38bdf8, #f97316);
+            padding: 4px;
+            box-shadow: 0 10px 40px rgba(56, 189, 248, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #38bdf8, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: #38bdf8;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Botones */
+        .btn-primary {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #38bdf8, #f97316);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            color: #38bdf8;
+            text-decoration: none;
+            border: 2px solid #38bdf8;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            transform: translateY(-2px);
+        }
+
+        /* ========================================
+           SECCIÓN EXPERIENCIA
+           ======================================== */
+
+        .experience {
+            padding: 5rem 0;
+            background-color: #1e293b; /* Fondo ligeramente más claro */
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #38bdf8, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(249, 115, 22, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-header h3 {
+            color: #38bdf8;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            color: #f97316;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .experience-company {
+            color: #cbd5e1;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-description {
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        /* ========================================
+           SECCIÓN HABILIDADES
+           ======================================== */
+
+        .skills {
+            padding: 5rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(249, 115, 22, 0.05));
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           SECCIÓN PROYECTOS
+           ======================================== */
+
+        .projects {
+            padding: 5rem 0;
+            background-color: #1e293b;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(249, 115, 22, 0.05));
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            /* Asegurar que las imágenes se adapten correctamente */
+            display: block;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1); /* Zoom en la imagen al pasar el mouse */
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-content h3 {
+            color: #38bdf8;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            color: #94a3b8;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .project-content .btn-secondary {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        /* ========================================
+           SECCIÓN CONTACTO
+           ======================================== */
+
+        .contact {
+            padding: 5rem 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(249, 115, 22, 0.05));
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 8px;
+            color: #f8fafc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #64748b;
+        }
+
+        .social-links {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(249, 115, 22, 0.05));
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            text-align: center;
+        }
+
+        .social-links h3 {
+            color: #38bdf8;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            display: block;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(249, 115, 22, 0.1));
+            color: #f8fafc;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, #38bdf8, #f97316);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+
+        .footer {
+            background-color: #1e293b;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .footer p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           DISEÑO RESPONSIVE
+           ======================================== */
+
+        /* Tablets grandes y pantallas medianas */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 2rem;
+            }
+
+            .hero-image img {
+                max-width: 350px;
+                height: 350px;
+            }
+
+            .experience-grid,
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets */
+            }
+        }
+
+        /* Tablets (pantallas medianas) */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr; /* Una columna en tablets */
+                text-align: center;
+            }
+
+            .hero-image {
+                margin-bottom: 2rem;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-image img {
+                max-width: 300px;
+                height: 300px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr; /* Una columna en tablets */
+                gap: 2rem;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .experience-grid,
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets */
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr; /* Una columna para proyectos en tablets */
+            }
+        }
+
+        /* Tablets pequeñas y móviles grandes */
+        @media (max-width: 768px) {
+            /* Mostrar botón hamburguesa */
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Ocultar menú por defecto en móviles */
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                height: calc(100vh - 70px);
+                padding: 2rem;
+                gap: 1.5rem;
+                font-size: 1.1rem;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+
+            /* Mostrar menú cuando está activo */
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+                border-radius: 8px;
+                transition: background 0.3s ease;
+            }
+
+            .nav-menu a:hover {
+                background: rgba(56, 189, 248, 0.1);
+            }
+
+            /* Ajustes de hero */
+            .hero {
+                padding: 3rem 0 2rem;
+                margin-top: 70px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-image img {
+                max-width: 280px;
+                height: 280px;
+            }
+
+            /* Ajustes de secciones */
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .experience-grid,
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+                gap: 1.5rem;
+            }
+
+            .experience,
+            .skills,
+            .projects,
+            .contact {
+                padding: 3rem 0;
+            }
+
+            /* Ajustes de tarjetas */
+            .experience-card,
+            .skill-card,
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+        }
+
+        /* Móviles medianos */
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-image img {
+                max-width: 250px;
+                height: 250px;
+            }
+
+            .contact-form,
+            .social-links {
+                padding: 1.5rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Móviles pequeños */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-image img {
+                max-width: 220px;
+                height: 220px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .contact-form,
+            .social-links {
+                padding: 1.2rem;
+            }
+
+            .experience-card,
+            .skill-card {
+                padding: 1.2rem;
+            }
+
+            .skill-icon {
+                font-size: 2.5rem;
+            }
+
+            .project-image {
+                height: 180px;
+            }
+
+            .nav-brand h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Móviles muy pequeños */
+        @media (max-width: 360px) {
+            .hero-text h1 {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .hero-image img {
+                max-width: 200px;
+                height: 200px;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .experience-date {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación principal -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>BP</h2>
+            </div>
+            <!-- Botón hamburguesa para móviles -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección de Presentación -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Contenedor para la imagen de perfil -->
+                <div class="hero-image">
+                    <img src="https://preview.redd.it/batman-profile-pics-v0-qrz10k9s6fid1.jpg?width=542&format=pjpg&auto=webp&s=2f848b2d6644cbb03e0116e28755cd7e0a63319a" alt="Breyner Peña - Desarrollador Front-end" id="profile-image">
+                </div>
+                
+                <div class="hero-text">
+                    <h1>Breyner kadhir Peña Giron</h1>
+                    <h2>Desarrollador de Software Front-end</h2>
+                    <p class="hero-description">
+                        Estudiante de ADSO (Análisis y Desarrollo de Software) en el SENA. Ganador del 
+                        hackathon, apasionado por el desarrollo de software y la creación de soluciones 
+                        innovadoras que resuelven problemas reales.
+                    </p>
+                    <a href="#contacto" class="btn-primary">Contáctame</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Experiencia -->
+    <section id="experiencia" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="experience-grid">
+                <!-- Experiencia 1 - Hackathon -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Participación y Ganador de Hackathon</h3>
+                        <span class="experience-date">2024</span>
+                    </div>
+                    <p class="experience-company">Competencia de Desarrollo de Software</p>
+                    <p class="experience-description">
+                        Participación destacada en hackathon de desarrollo de software, desarrollando 
+                        una solución innovadora en tiempo limitado. Obtuve el primer lugar demostrando 
+                        habilidades en resolución de problemas, trabajo en equipo y desarrollo ágil.
+                    </p>
+                </div>
+
+                <!-- Experiencia 2 -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Desarrollador Front-end</h3>
+                        <span class="experience-date">2024-2025</span>
+                    </div>
+                    <p class="experience-company">Digital Innovations</p>
+                    <p class="experience-description">
+                        Creación de interfaces de usuario responsivas y accesibles. 
+                        Implementación de componentes reutilizables y mejora de la experiencia de usuario.
+                    </p>
+                </div>
+
+                <!-- Experiencia 3 -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Desarrollador Web Junior</h3>
+                        <span class="experience-date">2024 - 2025</span>
+                    </div>
+                    <p class="experience-company">Startup Tech</p>
+                    <p class="experience-description">
+                        Desarrollo de sitios web usando HTML, CSS y JavaScript. 
+                        Aprendizaje continuo de frameworks modernos y mejores prácticas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Habilidades -->
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades Destacadas</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>HTML</h3>
+                    <p>Estructura y semántica web moderna</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>CSS</h3>
+                    <p>Diseño responsive y animaciones modernas</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🐘</div>
+                    <h3>PHP</h3>
+                    <p>Desarrollo backend y aplicaciones dinámicas</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚛️</div>
+                    <h3>React</h3>
+                    <p>Desarrollo de aplicaciones dinámicas y escalables</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📘</div>
+                    <h3>JavaScript</h3>
+                    <p>Programación funcional y orientada a objetos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Proyectos -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="projects-grid">
+                <!-- Proyecto 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop" alt="Sistema de Entrada y Salida de Objetos SENA">
+                    </div>
+                    <div class="project-content">
+                        <h3>Sistema de Entrada y Salida de Objetos SENA</h3>
+                        <p>Sistema desarrollado para gestionar el control de entrada y salida de objetos 
+                        en el SENA. Permite registrar, consultar y generar reportes de los elementos 
+                        que ingresan y salen de las instalaciones, facilitando el inventario y control de bienes.</p>
+                        <a href="#" class="btn-secondary">Ver más</a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=250&fit=crop" alt="Plataforma de Vacantes y Postulaciones">
+                    </div>
+                    <div class="project-content">
+                        <h3>Plataforma de Vacantes y Postulaciones</h3>
+                        <p>Sistema web donde las empresas pueden crear y publicar vacantes laborales, 
+                        mientras que los usuarios pueden postularse a ellas. Incluye perfil de empresa, 
+                        perfil de usuario, filtros de búsqueda y sistema de notificaciones.</p>
+                        <a href="#" class="btn-secondary">Ver más</a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop" alt="Sistema de Automatización para Conjunto Cerrado">
+                    </div>
+                    <div class="project-content">
+                        <h3>Sistema de Automatización para Conjunto Cerrado</h3>
+                        <p>Solución integral que automatiza los procesos manuales de un conjunto cerrado. 
+                        Gestiona pagos de administración, visitas, correspondencia, mantenimiento y 
+                        comunicados. Digitaliza procesos que anteriormente se realizaban manualmente, 
+                        mejorando la eficiencia y organización.</p>
+                        <a href="#" class="btn-secondary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-content">
+                <!-- Formulario de contacto -->
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <!-- Enlaces a redes sociales -->
+                <div class="social-links">
+                    <h3>Sígueme en</h3>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                            <span>X (Twitter)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Breyner Peña – Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript embebido -->
+    <script>
+        // ========================================
+        // MANEJO DEL FORMULARIO DE CONTACTO
+        // ========================================
+
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Obtener el formulario de contacto por su ID
+            const contactForm = document.getElementById('contact-form');
+            
+            // Agregar un event listener para cuando se envíe el formulario
+            contactForm.addEventListener('submit', function(event) {
+                // Prevenir el comportamiento por defecto (evitar que la página se recargue)
+                event.preventDefault();
+                
+                // Obtener los valores de los campos del formulario
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Validar que todos los campos estén completos
+                if (name && email && message) {
+                    // Mostrar mensaje en la consola
+                    console.log('Formulario enviado correctamente');
+                    console.log('Nombre:', name);
+                    console.log('Correo:', email);
+                    console.log('Mensaje:', message);
+                    
+                    // Opcional: Mostrar un mensaje de éxito al usuario
+                    alert('¡Mensaje enviado correctamente! Revisa la consola para ver los detalles.');
+                    
+                    // Limpiar el formulario después del envío
+                    contactForm.reset();
+                } else {
+                    // Si faltan campos, mostrar un mensaje de error
+                    alert('Por favor, completa todos los campos del formulario.');
+                }
+            });
+
+            // ========================================
+            // MENÚ HAMBURGUESA PARA MÓVILES
+            // ========================================
+            
+            // Obtener el botón del menú y el menú de navegación
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            // Agregar event listener al botón hamburguesa
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    // Alternar clase 'active' en el botón y menú
+                    menuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+                
+                // Cerrar menú al hacer clic en un enlace (solo en móviles)
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        // Solo cerrar si el menú está activo (en móviles)
+                        if (window.innerWidth <= 768) {
+                            menuToggle.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                    });
+                });
+                
+                // Cerrar menú al hacer clic fuera de él
+                document.addEventListener('click', function(event) {
+                    const isClickInsideMenu = navMenu.contains(event.target);
+                    const isClickOnToggle = menuToggle.contains(event.target);
+                    
+                    if (!isClickInsideMenu && !isClickOnToggle && navMenu.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+                
+                // Cerrar menú al cambiar el tamaño de la ventana (si se hace más grande)
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+
+            // ========================================
+            // NAVEGACIÓN SUAVE AL HACER CLIC EN ENLACES
+            // ========================================
+            
+            // Obtener todos los enlaces del menú de navegación
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Agregar un event listener a cada enlace
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    // Obtener el atributo href del enlace
+                    const href = this.getAttribute('href');
+                    
+                    // Solo aplicar si el href comienza con #
+                    if (href.startsWith('#')) {
+                        // Prevenir el comportamiento por defecto
+                        event.preventDefault();
+                        
+                        // Obtener el elemento de destino usando el ID
+                        const targetId = href.substring(1); // Eliminar el #
+                        const targetElement = document.getElementById(targetId);
+                        
+                        // Si el elemento existe, hacer scroll suave hasta él
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth', // Scroll suave
+                                block: 'start' // Alinear al inicio
+                            });
+                        }
+                    }
+                });
+            });
+
+            // ========================================
+            // EFECTO DE APARICIÓN AL HACER SCROLL
+            // ========================================
+            
+            // Función para observar elementos y animarlos cuando sean visibles
+            const observerOptions = {
+                threshold: 0.1, // Disparar cuando el 10% del elemento sea visible
+                rootMargin: '0px 0px -50px 0px' // Margen adicional
+            };
+            
+            // Crear un Intersection Observer
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    // Si el elemento es visible
+                    if (entry.isIntersecting) {
+                        // Agregar clase para animación
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar todas las tarjetas y secciones
+            const animatedElements = document.querySelectorAll('.experience-card, .skill-card, .project-card');
+            
+            // Configurar estado inicial y observar cada elemento
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
